@@ -10,7 +10,7 @@ const Todos = (props) =>
           todo={ele}
           index={id}
           deleteTodo={props.delete}
-          update={props.update}
+          updateTodo={props.update}
         />
       })
     }

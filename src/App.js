@@ -15,12 +15,17 @@ class App extends Component {
     this.setState({todos: [...this.state.todos,todos]})
   }
 
-  updateTodos = (id,todos) => {
-
-    
+  updateTodo = (todoId, newTodo) => {
+    this.setState(
+      (state) => {
+        let newTodos = [...state.todos];
+        newTodos[todoId] = newTodo;
+        return ({todos: newTodos})
+      }
+    )
   }
 
-  deleteTodos = (todoId) => {
+  deleteTodo = (todoId) => {
 
     this.setState(
       ({todos: [...this.state.todos].filter((val, id) => id !== todoId)
@@ -37,8 +42,8 @@ class App extends Component {
         <br />
         <p>Current To Do List: </p>
         <Todos todos={this.state.todos}
-                delete={this.deleteTodos}
-                update={this.updateTodos}/>
+                delete={this.deleteTodo}
+                update={this.updateTodo}/>
       
       </main>
     );
