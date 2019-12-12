@@ -11,9 +11,7 @@ class App extends Component {
     }
   }
 
-  addTodos = (todos) => {
-    this.setState({todos: [...this.state.todos,todos]})
-  }
+  
 
   updateTodo = (todoId, newTodo) => {
     this.setState(

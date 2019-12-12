@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import todoActions from '../reducer/makeTodos'
 
 class NewTodo extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      newTodo: ''
-    }
-  }
+  
   onUpdate = (e) => {
     this.setState({newTodo: e.target.value})
   }
@@ -32,12 +28,16 @@ class NewTodo extends Component {
         <input 
           type="text"
           name="todoText"
-          value={this.state.newTodo}
+          value={this.newTodo}
           onChange={this.onUpdate}/>
-        <input type="submit" disable={this.state.newTodo}/>
+        <input type="submit" disable={this.newTodo}/>
       </form>
     )
   }
 }
 
-export default NewTodo
+export default connect(({newTodo}) => ({
+  newTodo : newTodo
+}),{
+  addTodos: todoActions.addTodo
+})(NewTodo);
